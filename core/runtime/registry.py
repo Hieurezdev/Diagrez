@@ -88,11 +88,16 @@ class DiagramRuntime:
             )
 
     def session(self) -> DiagramSession:
+        model = self.services.model
+        revisions = self.services.revisions
+        events = self.services.events
+        if model is None or revisions is None or events is None:
+            raise RuntimeError("Runtime services were not fully initialized")
         return DiagramSession(
-            self.services.model,
-            self.services.revisions,
+            model,
+            revisions,
             profile=self.services.profile,
-            events=self.services.events,
+            events=events,
         )
 
     def compiler(self) -> PlantUMLCompiler:

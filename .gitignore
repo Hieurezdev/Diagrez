@@ -17,3 +17,4 @@ web/dist/
 .npm-cache/
 .data/
 .pre-commit-cache/
+.uv-cache/

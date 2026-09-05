@@ -1,8 +1,8 @@
-from core.domain.diagram_ir import Actor, Relationship, SystemScope, UseCase, UseCaseIR
-from core.domain.validator import validate_use_case_ir
-from core.domain.normalizer import normalize_use_case_payload
-from core.domain.diagram_factory import parse_diagram
 from core.adapters.model import parse_json_object
+from core.domain.diagram_factory import parse_diagram
+from core.domain.diagram_ir import Actor, Relationship, SystemScope, UseCase, UseCaseIR
+from core.domain.normalizer import normalize_use_case_payload
+from core.domain.validator import validate_use_case_ir
 
 
 def test_validator_rejects_missing_relationship_reference():

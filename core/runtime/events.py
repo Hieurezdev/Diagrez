@@ -139,12 +139,19 @@ class WorkflowEventRecorder:
 def _event_from_dict(value: dict[str, object]) -> WorkflowEvent:
     payload = value.get("payload")
     return WorkflowEvent(
-        sequence=int(value["sequence"]),
+        sequence=_required_int(value, "sequence"),
         event=str(value["event"]),
         thread_id=str(value["thread_id"]),
         timestamp=str(value["timestamp"]),
-        turn=int(value["turn"]),
-        step=int(value["step"]),
+        turn=_required_int(value, "turn"),
+        step=_required_int(value, "step"),
         node=str(value["node"]) if value.get("node") is not None else None,
         payload=payload if isinstance(payload, dict) else {},
     )
+
+
+def _required_int(value: dict[str, object], key: str) -> int:
+    item = value.get(key)
+    if not isinstance(item, int):
+        raise TypeError(f"Workflow event field '{key}' must be an integer")
+    return item

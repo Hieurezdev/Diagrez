@@ -1,3 +1,4 @@
+from core.domain.diagnostics import Diagnostic, ValidationResult
 from core.domain.diagram_ir import UseCaseIR
 from core.domain.other_ir import (
     ActivityDiagramIR,
@@ -5,11 +6,12 @@ from core.domain.other_ir import (
     SequenceDiagramIR,
     StateMachineDiagramIR,
 )
-from core.domain.diagnostics import Diagnostic, ValidationResult
 
 
 def validate_use_case_ir(ir: UseCaseIR) -> ValidationResult:
-    nodes = {node.id for node in [*ir.actors, *ir.use_cases]}
+    nodes = {actor.id for actor in ir.actors} | {
+        use_case.id for use_case in ir.use_cases
+    }
     diagnostics: list[Diagnostic] = []
     scope_ids = {scope.id for scope in ir.scopes}
     for use_case in ir.use_cases:
@@ -224,7 +226,9 @@ def validate_diagram_ir(
                 )
             )
         decision_ids = {item.id for item in ir.nodes if item.type == "decision"}
-        outgoing = {node_id: [] for node_id in decision_ids}
+        outgoing: dict[str, list[str | None]] = {
+            node_id: [] for node_id in decision_ids
+        }
         for flow in ir.flows:
             if flow.source in outgoing:
                 outgoing[flow.source].append(flow.guard)

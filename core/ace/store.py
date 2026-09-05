@@ -5,7 +5,6 @@ from typing import Protocol
 
 from core.ace.models import Playbook, PlaybookBullet, PlaybookSection
 
-
 SECTION_TITLES: dict[PlaybookSection, str] = {
     "notation_rules": "NOTATION RULES",
     "semantic_checks": "SEMANTIC CHECKS",

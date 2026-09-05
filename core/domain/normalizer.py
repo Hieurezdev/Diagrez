@@ -1,6 +1,6 @@
-from typing import Any
 import re
 import unicodedata
+from typing import Any
 
 
 def _stable_id(value: str) -> str:

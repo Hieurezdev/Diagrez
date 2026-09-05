@@ -307,10 +307,10 @@ class PlantUMLCompiler:
         parts = [
             f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {width} {height}"><defs><marker id="s-arrow" markerWidth="9" markerHeight="9" refX="8" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8" fill="none" stroke="#20242a"/></marker></defs><rect width="100%" height="100%" fill="#fff"/><text x="28" y="40" font-family="Arial" font-size="22" font-weight="700">{escape(ir.title)} · Sequence Diagram</text>'
         ]
-        for item in ir.participants:
-            x = pos[item.id]
+        for participant in ir.participants:
+            x = pos[participant.id]
             parts.append(
-                f'<rect x="{x - 70}" y="72" width="140" height="42" fill="#69c9ec" stroke="#20242a"/><text x="{x}" y="98" text-anchor="middle" font-family="Arial" font-size="13">{escape(item.name)}</text><line x1="{x}" y1="114" x2="{x}" y2="{height - 30}" stroke="#777" stroke-dasharray="7 5"/>'
+                f'<rect x="{x - 70}" y="72" width="140" height="42" fill="#69c9ec" stroke="#20242a"/><text x="{x}" y="98" text-anchor="middle" font-family="Arial" font-size="13">{escape(participant.name)}</text><line x1="{x}" y1="114" x2="{x}" y2="{height - 30}" stroke="#777" stroke-dasharray="7 5"/>'
             )
         for index, message in enumerate(ir.messages):
             if message.source not in pos or message.target not in pos:
@@ -360,7 +360,7 @@ class PlantUMLCompiler:
         lines.extend(f":{node.label};" for node in ir.nodes if node.type == "action")
         lines.extend(["stop", "@enduml"])
         node_ids = {node.id for node in ir.nodes}
-        outgoing = {node_id: [] for node_id in node_ids}
+        outgoing: dict[str, list[str]] = {node_id: [] for node_id in node_ids}
         for flow in ir.flows:
             if flow.source in outgoing and flow.target in node_ids:
                 outgoing[flow.source].append(flow.target)
@@ -490,7 +490,7 @@ class PlantUMLCompiler:
         )
         lines.append("@enduml")
         state_ids = {state.id for state in ir.states}
-        outgoing = {state_id: [] for state_id in state_ids}
+        outgoing: dict[str, list[str]] = {state_id: [] for state_id in state_ids}
         for transition in ir.transitions:
             if transition.source in outgoing and transition.target in state_ids:
                 outgoing[transition.source].append(transition.target)

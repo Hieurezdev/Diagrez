@@ -23,7 +23,6 @@ from core.ace.prompts import (
 from core.ace.store import PlaybookStore
 from core.adapters.model import CompletionPort
 
-
 SECTION_TITLES = {
     "notation_rules": "NOTATION RULES",
     "semantic_checks": "SEMANTIC CHECKS",

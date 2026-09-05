@@ -1,22 +1,21 @@
 import re
 from typing import Any
 
+from pydantic import TypeAdapter
+
 from core.domain.diagram_ir import UseCaseIR
 from core.domain.normalizer import normalize_use_case_payload
 from core.domain.other_ir import (
     ActivityDiagramIR,
     ClassDiagramIR,
+    DiagramIR,
     SequenceDiagramIR,
     StateMachineDiagramIR,
 )
 
-
-SCHEMAS = {
-    "class": ClassDiagramIR,
-    "sequence": SequenceDiagramIR,
-    "activity": ActivityDiagramIR,
-    "state_machine": StateMachineDiagramIR,
-}
+DIAGRAM_ADAPTER: TypeAdapter[DiagramIR] = TypeAdapter(
+    ClassDiagramIR | SequenceDiagramIR | ActivityDiagramIR | StateMachineDiagramIR
+)
 
 
 def build_prompt(diagram_type: str) -> str:
@@ -130,4 +129,4 @@ def parse_diagram(diagram_type: str, payload: dict[str, Any]):
         )
     normalized = dict(payload)
     normalized["type"] = diagram_type
-    return SCHEMAS[diagram_type].model_validate(normalized)
+    return DIAGRAM_ADAPTER.validate_python(normalized)
