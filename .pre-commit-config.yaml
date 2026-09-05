@@ -44,22 +44,15 @@ repos:
           (^tests?/fixtures/)|(^data/)|(^assets/)
 
   # 4) Type-check & test (pre-push)
-  - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v1.17.1
+  - repo: local
     hooks:
       - id: mypy
         name: mypy (pre-push)
-        stages: [pre-push]
-        args: ["--pretty", "--cache-dir=.mypy_cache", "core", "main.py"]
+        entry: .venv/bin/mypy --pretty --cache-dir=.mypy_cache core main.py
+        language: system
         pass_filenames: false
-        additional_dependencies:
-          - pydantic>=2
-          - types-requests
-        exclude: |
-          (^migrations/)|(^tests?/fixtures/)
-
-  - repo: local
-    hooks:
+        stages: [pre-push]
+        types: [python]
       - id: pytest
         name: pytest (quick, pre-push)
         entry: env UV_CACHE_DIR=.uv-cache uv run pytest -q tests

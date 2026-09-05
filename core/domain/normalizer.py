@@ -92,7 +92,9 @@ def normalize_use_case_payload(payload: dict[str, Any]) -> dict[str, Any]:
             "extends": "extend",
             "includes": "include",
         }
-        item["type"] = aliases.get(str(item.get("type", "")).lower(), item.get("type"))
+        relationship_type = item.get("type")
+        if isinstance(relationship_type, str):
+            item["type"] = aliases.get(relationship_type.lower(), relationship_type)
         raw_source = (
             item.get("source")
             or item.get("from")
