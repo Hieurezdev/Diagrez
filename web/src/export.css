@@ -1,0 +1,22 @@
+.header-actions{display:flex;align-items:center;gap:18px}
+.export-dock{position:relative}
+.export-trigger{width:auto;min-width:124px;margin:0;padding:11px 14px;background:#20242a;text-align:center;box-shadow:3px 3px 0 #df625e}
+.export-trigger:disabled{opacity:.45;cursor:not-allowed}
+.export-icon{font-size:18px;margin-right:7px}
+.button-caret{margin-left:8px;color:#9ac8df}
+.export-menu{position:absolute;z-index:20;right:0;top:calc(100% + 13px);width:276px;padding:8px;background:#fffdf8;border:1px solid #20242a;box-shadow:7px 7px 0 #d7d0c2}
+.export-menu-heading{padding:10px 11px 8px;font:600 10px ui-monospace,SFMono-Regular,monospace;letter-spacing:.1em;color:#73766f;border-bottom:1px solid #d7d0c2}
+.export-menu button{display:flex;align-items:center;gap:12px;margin:0;padding:12px 10px;background:transparent;color:#20242a;font-size:12px}
+.export-menu button:hover,.export-menu button:focus-visible{background:#eaf4f6;outline:0}
+.export-menu strong{min-width:48px;font:700 12px ui-monospace,SFMono-Regular,monospace;color:#1d587a}
+.export-menu button span{float:none;color:#73766f;font-weight:500;text-align:left}
+.export-message{position:absolute;right:0;top:calc(100% + 17px);white-space:nowrap;font:600 11px ui-monospace,SFMono-Regular,monospace;color:#356a4b}
+.use-card{margin-top:36px;padding:16px 0;border-top:2px solid #df625e}
+.use-card p{font-size:12px;line-height:1.55;color:#73766f;margin:10px 0 15px}
+.use-steps{display:grid;gap:8px;font:600 10px ui-monospace,SFMono-Regular,monospace;color:#20242a}
+.use-steps b{display:inline-block;width:23px;color:#df625e}
+@media(max-width:900px){.header-actions{width:100%;justify-content:space-between}.export-menu{left:0;right:auto}}
+.workspace-toolbar{display:flex;justify-content:space-between;align-items:center;gap:18px;min-height:54px;padding:8px 14px;background:#20242a;color:#f7f3ea;border-bottom:1px solid #38434a;font:600 10px ui-monospace,SFMono-Regular,monospace;letter-spacing:.05em}
+.tool-group{display:flex;align-items:center;gap:6px}.tool-label{color:#9ac8df;margin-right:6px}.tool-button{width:auto;min-width:30px;margin:0;padding:7px 9px;border:1px solid #56636a;background:#29343a;color:#fff;text-align:center;font:600 12px ui-monospace,SFMono-Regular,monospace}.tool-button:hover:not(:disabled),.tool-button:focus-visible{background:#df625e;border-color:#df625e;outline:0}.tool-button:disabled{opacity:.35;cursor:not-allowed}.text-tool{padding-inline:11px}.zoom-value{min-width:42px;text-align:center;color:#f2c77d}.tool-context{margin-left:8px;color:#9aa8ad;text-transform:uppercase}.canvas-stage{transform-origin:top left;min-height:calc(100% - 54px);transition:transform 140ms ease}.canvas-stage>.editor-shell,.canvas-stage>.diagram{min-height:600px}.palette{margin-top:28px;border-top:1px solid #d7d0c2;padding-top:15px}.palette-heading{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}.palette-heading>span:last-child{font:10px ui-monospace,SFMono-Regular,monospace;color:#73766f}.palette-items{display:grid;gap:5px}.palette-item{display:flex;align-items:center;gap:9px;margin:0;padding:9px 8px;background:#fffdf8;border:1px solid #d7d0c2;color:#20242a;font:600 11px ui-monospace,SFMono-Regular,monospace}.palette-item:hover,.palette-item:focus-visible{border-color:#1d587a;background:#eaf4f6;outline:0}.palette-glyph{width:21px;color:#1d587a;font-size:17px;text-align:center}.palette-plus{margin-left:auto;color:#df625e;font-size:15px}.history .revision{display:flex;justify-content:space-between;align-items:flex-start;width:100%;background:transparent;color:#20242a;text-align:left;border:0;border-top:1px solid #d7d0c2}.history .revision:hover,.history .revision:focus-visible{background:#edf5f7;outline:0}.history .revision.active{border-top:2px solid #1d587a}.history .revision small{margin-top:2px;text-align:right}.history .revision span{font-weight:700}
+@media(max-width:1100px){.workspace-toolbar{align-items:flex-start;flex-direction:column;gap:7px}.tool-actions{width:100%;flex-wrap:wrap}.canvas-stage{min-height:calc(100% - 84px)}}
+.tool-active{background:#df625e;border-color:#df625e}.pan-mode{cursor:grab}

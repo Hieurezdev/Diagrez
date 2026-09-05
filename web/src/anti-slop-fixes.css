@@ -1,0 +1,6 @@
+/* Keep the glass treatment on navigation chrome, not the working panels. */
+.rail,.inspector{background:rgba(248,252,250,.94);border-color:rgba(83,126,141,.22);box-shadow:0 8px 24px rgba(31,54,72,.06);backdrop-filter:none;-webkit-backdrop-filter:none}
+.palette,.structure-tools{background:rgba(248,252,250,.98);border-color:rgba(83,126,141,.22);box-shadow:0 8px 24px rgba(31,54,72,.06);backdrop-filter:none;-webkit-backdrop-filter:none}
+.palette-item:disabled{background:rgba(231,239,239,.86);color:#657479}
+.palette-item:disabled .palette-glyph,.palette-item:disabled .palette-plus{color:#7b898d}
+.export-menu{background:rgba(250,253,252,.98);backdrop-filter:none;-webkit-backdrop-filter:none}

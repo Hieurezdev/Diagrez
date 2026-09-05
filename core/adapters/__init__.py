@@ -1,0 +1,1 @@
+"""Adapters at external seams."""

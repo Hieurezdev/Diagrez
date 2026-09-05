@@ -1,0 +1,19 @@
+# Python-generated files
+__pycache__/
+*.py[cod]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+.env
+.env.local
+__pycache__/
+.pytest_cache/
+web/node_modules/
+web/dist/
+.npm-cache/
+.data/
+.pre-commit-cache/

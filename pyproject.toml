@@ -1,0 +1,28 @@
+[project]
+name = "uml-harness"
+version = "0.1.0"
+description = "Agentic diagram compiler with Python core and TypeScript UI"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+  "fastapi>=0.115,<1",
+  "langgraph>=0.2,<1",
+  "openai>=1.60,<2",
+  "pydantic>=2.9,<3",
+  "python-dotenv>=1.0,<2",
+  "uvicorn[standard]>=0.30,<1",
+]
+
+[project.scripts]
+uml-harness = "core.cli:main"
+
+[dependency-groups]
+dev = [
+  "mypy>=1.13,<2",
+  "pre-commit>=3.5,<5",
+  "pytest>=8,<9",
+  "ruff>=0.12,<1",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
