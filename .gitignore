@@ -18,3 +18,5 @@ web/dist/
 .data/
 .pre-commit-cache/
 .uv-cache/
+ace/
+deepseek-harness/
